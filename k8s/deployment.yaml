@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: medical-healthcare-assistant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: medical-healthcare-assistant
+  template:
+    metadata:
+      labels:
+        app: medical-healthcare-assistant
+    spec:
+      containers:
+        - name: streamlit
+          image: medical-healthcare-assistant:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8501
+          envFrom:
+            - configMapRef:
+                name: medical-healthcare-config
+            - secretRef:
+                name: medical-healthcare-secret
+          readinessProbe:
+            httpGet:
+              path: /_stcore/health
+              port: 8501
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /_stcore/health
+              port: 8501
+            initialDelaySeconds: 30
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi

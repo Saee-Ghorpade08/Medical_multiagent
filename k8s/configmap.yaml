@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: medical-healthcare-config
+data:
+  GROQ_MODEL: "llama-3.3-70b-versatile"

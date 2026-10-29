@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Medical Healthcare Assistant</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <div class="symbol">✚</div>
+      <p class="eyebrow">GENAI &amp; ML DEVOPS LAB · ASSIGNMENT 10</p>
+      <h1>Medical Healthcare Assistant</h1>
+      <p class="subtitle">A coordinated multi-agent assistant for educational healthcare research.</p>
+    </header>
+    <section class="notice"><strong>Educational use only.</strong> This tool does not diagnose conditions or prescribe treatment. Do not enter private medical information.</section>
+    <section class="panel">
+      <label for="question">Your question</label>
+      <textarea id="question" placeholder="Example: What does HbA1c measure?"></textarea>
+      <button id="ask">Ask healthcare agents</button>
+      <p id="status" role="status"></p>
+      <div id="answer" class="answer" hidden></div>
+    </section>
+    <section class="agents">
+      <h2>Multi-agent workflow</h2>
+      <ol>
+        <li><strong>Healthcare Query Analyzer</strong><span>Organizes the question</span></li>
+        <li><strong>Medical Research Agent</strong><span>Searches educational notes</span></li>
+        <li><strong>Medical Answer Reviewer</strong><span>Reviews the final response</span></li>
+      </ol>
+    </section>
+    <footer>FastAPI · Agno · Groq · Educational demo</footer>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
